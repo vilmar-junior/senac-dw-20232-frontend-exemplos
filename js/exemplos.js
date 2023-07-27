@@ -5,3 +5,5 @@ console.log('Curso: ' + curso);
 
 let fase = Number(prompt('Informe a fase: '));
 console.log('Fase: ' + fase);
+
+//teste
