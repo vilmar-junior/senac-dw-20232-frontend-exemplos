@@ -24,5 +24,19 @@ async function buscarCEP(cep){
 
     //Retorno da Promise
     const json = await promiseConsultaCEP.json();
+    console.log(json);
 }
 
+async function buscarCEPVersao2(cep){
+    //Parâmetros opcionais para a requisição
+    let options = {
+        method: "GET",
+        headers: {"Content-type": "application/json"}
+    };
+    //Esta variável é uma Promise (um objeto que será preenchido quando a requisição HTTP retornar)
+    //Atenção com as aspas, para passar o parâmetro CEP devemos usar o ACENTO GRAVE
+    const promiseConsultaCEP = fetch(`https://viacep.com.br/ws/${cep}/json/`, options)
+        .then((resultado) => resultado.json())
+        .then((json) => console.log(json))
+
+}
