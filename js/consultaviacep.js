@@ -38,5 +38,8 @@ async function buscarCEP(){
 
     //Retorno da Promise
     const json = await promiseConsultaCEP.json();
+    console.log(json);
+
+    //TODO preencher os dados do endereço obtido na página HTML
 }
 ///////////////////////////////////////////////////////////////
