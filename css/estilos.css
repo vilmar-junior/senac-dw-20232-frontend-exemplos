@@ -1,8 +1,10 @@
 /* Seletor wildcard (vale para todos) */
 *{
-    padding: 10;
-    margin: 10;
     font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    /* TODO */
 }
 
 /* Seletor por elementos encadeados */
