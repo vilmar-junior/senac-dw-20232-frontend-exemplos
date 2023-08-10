@@ -8,8 +8,39 @@ https://www.alura.com.br/artigos/css-guia-do-flexbox
 */
 
 *{
-    padding: 10;
-    margin: 10;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    /* TODO */
+}
+
+/* Seletor por elementos encadeados */
+section+h1{
+    background-color: blue;
+}
+
+/* Seletor por classe */
+.formulario {
+    background-color: pink;
+}
+
+/* Seletor por id */
+#cep{
+    background-color: yellow;
+}
+
+[name]{
+    background-color: gray;    
+}
+
+/* Seletor por elemento (tag) */
+h1{
+    background-color: teal;
+}
+
+input[type = "text"]{
+    background-color: royalblue;
 }
 
 /* Definições gerais (pseudo-elementos), equivalem a constantes*/
