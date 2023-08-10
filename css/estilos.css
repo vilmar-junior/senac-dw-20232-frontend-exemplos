@@ -25,6 +25,7 @@ body {
     background: var(--cor-fundo);
     color: var(--cor-fonte);
     font-size: 16px;
+    border: none;
 }
 
 .cabecalho{
