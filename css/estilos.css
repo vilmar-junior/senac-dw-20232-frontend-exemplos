@@ -5,42 +5,10 @@
 Referências:
 https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox
 https://www.alura.com.br/artigos/css-guia-do-flexbox
+https://desenvolvimentoparaweb.com/css/bem/
 */
-
 *{
     font-family: 'Courier New', Courier, monospace;
-}
-
-body{
-    /* TODO */
-}
-
-/* Seletor por elementos encadeados */
-section+h1{
-    background-color: blue;
-}
-
-/* Seletor por classe */
-.formulario {
-    background-color: pink;
-}
-
-/* Seletor por id */
-#cep{
-    background-color: yellow;
-}
-
-[name]{
-    background-color: gray;    
-}
-
-/* Seletor por elemento (tag) */
-h1{
-    background-color: teal;
-}
-
-input[type = "text"]{
-    background-color: royalblue;
 }
 
 /* Definições gerais (pseudo-elementos), equivalem a constantes*/
@@ -147,7 +115,7 @@ div {
     display: block;
     font-family: var(--fonte-texto);
     font-weight: 400;
-    width: 100px;
+    width: 120px;
     text-shadow: 1px 1px 1px black;
 }
 
@@ -180,7 +148,7 @@ div {
 
 .formulario__fieldset__botao{
     border: 2px solid var(--cor-borda);
-    border-radius: 10px;
+    border-radius: 0px;
     width: 450px;
     height: 36px;
     font-size: 16px;
