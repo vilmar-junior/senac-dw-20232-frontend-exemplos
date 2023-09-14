@@ -6,8 +6,30 @@ async function buscarTodosProdutos(){
     });
 }
 
+async function pesquisar(){
+    //POST localhost:8080/api/produtos/filtro
+    //parâmetros: ProdutoSeletor no formato JSON
+    let options = {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({
+            valorMinimo : document.getElementById("inputValorMinimo").value, 
+            valorMaximo : inputValorMaximo.value
+        })
+    };
+    const despesaUsuario = await fetch('http://localhost:8080/api/produtos/filtro', options);
+    const despesaJson = await despesaUsuario.json();
+
+    preencherTabela(despesaJson);
+}
+
+function limparTabela(){
+    document.getElementById("corpoTabela").innerHTML = "";
+}
+
 function preencherTabela(jsonProdutos){
-    // <tr>
+    this.limparTabela();
+    // <tr>image.png
     //     <td>1</td>
     //     <td>Café</td>
     //     <td>Ouro</td>

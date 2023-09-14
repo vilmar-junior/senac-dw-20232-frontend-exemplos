@@ -74,3 +74,42 @@ function salvarEndereco(){
     //TODO chamar no backend
     alert('Ainda não desenvolvido');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function excluirPorCpf(){
+    let cpf = "";//TODO pegar o cpf informado na tela
+
+    let options = {
+        method: "DELETE"
+    };
+    const exluirPessoa = 
+        await fetch('http://localhost:8080/api/pessoa/deletar-por-cpf/' + cpf, options);
+        const resultado = await exluirPessoa.json();
+    //tratamento do response aqui (despesaJson)
+}
+
+fetch('https://reqres.in/api/posts/1', { method: 'DELETE' })
+    .then(() => console.log('Excluiu'));
+
+
+
+
+
+
+
+
+
+
