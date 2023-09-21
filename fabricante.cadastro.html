@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Cadastro de Fabricantes</title>
+        
+        <script src="/js/fabricante.cadastro.js"></script>
+        <link rel="stylesheet" href="/css/estilos.css">
+    </head>
+    <body>
+        <header class="cabecalho">
+            <h1 class="cabecalho__titulo">Novo Fabricante</h1>
+        </header>
+        <main class="principal">
+            <section class="section__principal">
+                <!-- Questão 1 da prova -->
+               <form>
+                    <div>
+                        <label class="formulario__texto" for="txtNome">Nome:</label>
+                        <input class="formulario__fieldset__input__descricao" type="text" id="txtNome" name="txtNome"/>    
+                    </div>
+                    <div>
+                        <label class="formulario__texto" for="txtCnpj">CNPJ:</label>
+                        <input class="formulario__fieldset__input__descricao" type="text" maxlength="14" id="txtCnpj" name="txtCnpj"/>    
+                    </div>
+                    <div>
+                        <label class="formulario__texto" for="txtCep">CEP:</label>
+                        <!-- Chamar viaCep -->
+                        <input class="formulario__fieldset__input__descricao" 
+                               type="text" maxlength="8" id="txtCep" name="txtCep"
+                               onblur="buscarCep()"/>    
+                    </div>
+                    <div>
+                        <label class="formulario__texto" for="txtCidade">Cidade:</label>
+                        <input class="formulario__fieldset__input__descricao" type="text" disabled id="txtCidade" name="txtCidade"/>    
+                    </div>
+                    <div>
+                        <label class="formulario__texto" for="txtUf">UF:</label>
+                        <input class="formulario__fieldset__input__descricao" type="text" disabled id="txtUf" name="txtUf"/>    
+                    </div>
+                    <div>
+                        <label class="formulario__texto"></label>
+                        <input class="formulario__fieldset__botao" 
+                               id="botaoSalvar" 
+                               type="button" 
+                               value="Salvar"
+                               onclick="salvar()"/>  
+                    </div>
+               </form> 
+            </section>
+            <section class="section__principal">
+                <!-- Questão 2 da prova -->
+                <div>
+                    <label class="formulario__texto"></label>
+                    <input class="formulario__fieldset__botao" 
+                           id="botaoPesquisar" 
+                           type="button" 
+                           value="Pesquisar"
+                           onclick="pesquisar()"/>  
+                </div>
+                <div>
+                    <label class="formulario__texto"></label>
+                    <input class="formulario__fieldset__botao" 
+                           id="botaoLimpar" 
+                           type="button" 
+                           value="Limpar"
+                           onclick="limparTabela()"/>  
+                </div>
+                <table>
+                    <thead>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>CNPJ</th>
+                        <th>Endereço</th>
+                    </thead>
+                    <tbody id="corpoTabela">
+                      
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </body>
+</html>
