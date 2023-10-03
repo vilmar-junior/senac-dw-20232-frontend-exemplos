@@ -1,8 +1,8 @@
+import { Produto } from 'src/app/shared/model/produto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'; // Observable serve para fazer a requisição assíncrona
-import { Produto } from './model/produto';
-import { ProdutoSeletor } from './model/seletor/produto.seletor';
+import { ProdutoSeletor } from '../model/seletor/produto.seletor';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ProdutoService {
   constructor(private httpClient: HttpClient) { }
 
   // Declarar os métodos da API REST
-  listarTodos(): Observable<Array<Produto>> {//com retorno EXPLÍCITO(Observable<Array<Produto>>)  
+  listarTodos(): Observable<Array<Produto>> {//com retorno EXPLÍCITO(Observable<Array<Produto>>)
     return this.httpClient.get<Array<Produto>>(this.API);
   }
 

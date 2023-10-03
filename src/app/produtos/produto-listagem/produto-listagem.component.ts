@@ -1,6 +1,6 @@
+import { ProdutoService } from './../../shared/service/produto.service';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/shared/model/produto';
-import { ProdutoService } from 'src/app/shared/produto.service';
 
 @Component({
   selector: 'app-produto-listagem',
@@ -24,7 +24,7 @@ export class ProdutoListagemComponent implements OnInit {
     this.produtoService.listarTodos().subscribe(
       resultado => {
         this.produtos = resultado;
-      }, 
+      },
       erro => {
         console.log('Erro ao buscar produtos', erro);
       }
