@@ -5,6 +5,9 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    //Propriedade adicionada para permitir a declaração 
+    //de classes (MODEL) sem construtor
+    "strictPropertyInitialization": false, 
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FabricanteService {
 
-  private readonly API = 'http://localhost:8080/fabricantes';
+  private readonly API = 'http://localhost:8080/api/fabricantes';
 
   constructor(private httpClient: HttpClient) { }
 

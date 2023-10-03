@@ -1,4 +1,4 @@
-export class ProdutoSeletor {
+export interface ProdutoSeletor {
     nome: string;
     nomeFabricante: string;
     cnpjFabricante: string;
