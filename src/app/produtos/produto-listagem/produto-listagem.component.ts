@@ -1,3 +1,4 @@
+import { ProdutoSeletor } from './../../shared/model/seletor/produto.seletor';
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/shared/model/produto';
 import { ProdutoService } from 'src/app/shared/produto.service';
@@ -11,6 +12,7 @@ export class ProdutoListagemComponent implements OnInit {
 
   //Lista de produtos que fará o binding com a tabela na view (html)
   public produtos: Array<Produto> = new Array();
+  public seletor: ProdutoSeletor = new ProdutoSeletor();
 
   constructor(private produtoService: ProdutoService){
   }
