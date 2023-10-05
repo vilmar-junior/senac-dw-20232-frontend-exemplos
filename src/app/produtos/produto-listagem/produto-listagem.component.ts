@@ -22,6 +22,17 @@ export class ProdutoListagemComponent implements OnInit {
     this.buscarProdutos();
   }
 
+  pesquisar(){
+    this.produtoService.listarComSeletor(this.seletor).subscribe(
+      resultado => {
+        this.produtos = resultado;
+      },
+      erro => {
+        console.log('Erro ao buscar produtos', erro);
+      }
+    );
+  }
+
   buscarProdutos(){
     this.produtoService.listarTodos().subscribe(
       resultado => {
@@ -31,6 +42,10 @@ export class ProdutoListagemComponent implements OnInit {
         console.log('Erro ao buscar produtos', erro);
       }
     );
+  }
+
+  limpar(){
+    this.seletor = new ProdutoSeletor();
   }
 
   editar(id: number){

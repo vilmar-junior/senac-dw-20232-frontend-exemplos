@@ -12,25 +12,34 @@
           <form>
             <!-- <pre>Seletor em JSON ("canteiro de obras - comentar/apagar"): {{seletor | json}}</pre> -->
               <!-- TODO botar nome e nomeFabricante em uma linha única (cada item ocupando 6 espaços) -->
-              <div class="form-group">
-                <label for="nome">Nome</label>
-                <input class="form-control" name="nome" [(ngModel)]="seletor.nome">
-              </div>
-              <div class="form-group">
-                <label for="nomeFabricante">Fabricante</label>
-                <input class="form-control" name="nomeFabricante"  [(ngModel)]="seletor.nomeFabricante">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="nome">Nome</label>
+                  <input class="form-control" name="nome" [(ngModel)]="seletor.nome">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="nomeFabricante">Fabricante</label>
+                  <input class="form-control" name="nomeFabricante"  [(ngModel)]="seletor.nomeFabricante">
+                </div>
               </div>
 
               <br>
-              <div class="form-group">
-                <button type="submit"   class="form-control btn btn-primary" ngClick="pesquisar()">Pesquisar</button>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <button type="submit" class="form-control btn btn-primary"
+                          (click)="pesquisar()">Pesquisar</button>
+                </div>
+                <div class="form-group col-md-6">
+                  <button type="submit" class="form-control btn btn-danger"
+                          (click)="limpar()">Limpar</button>
+                </div>
               </div>
           </form>
         </div>
       </div>
     </div>
-  </div>   
-  <br> 
+  </div>
+  <br>
   <div class="row">
     <div class="col-sm-12">
       <div class="card">
@@ -53,8 +62,7 @@
                       <td>{{ p.id }}</td>
                       <td>{{ p.nome }}</td>
                       <td>
-                        <button ngbTooltip="Editar" 
-                                class="btn btn-xs btn-info" 
+                        <button class="btn btn-xs btn-info"
                                 (click)="editar(p.id)">Editar
                         </button>
                       </td>
