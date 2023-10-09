@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, //importar o módulo de requisições HTTP
-    FormsModule
+    FormsModule,
+    SweetAlert2Module.forRoot(), //https://github.com/sweetalert2/ngx-sweetalert2
   ],
   providers: [],
   bootstrap: [AppComponent]

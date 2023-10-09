@@ -53,14 +53,18 @@
                   <thead>
                     <tr>
                       <th scope="col">Id</th>
-                      <th scope="col">Nome</th>
+                      <th scope="col">Nome (Marca)</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">Data de Cadastro</th>
                       <th>Ações</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let p of produtos">
-                      <td>{{ p.id }}</td>
-                      <td>{{ p.nome }}</td>
+                      <td>{{p.id}}</td>
+                      <td>{{p.nome}} ({{p.fabricanteDoProduto.nome}})</td>
+                      <td>{{p.valor | currency: 'BRL'}}</td>
+                      <td>{{p.dataCadastro | date: 'dd/MM/yyyy'}}</td>
                       <td>
                         <button class="btn btn-xs btn-info"
                                 (click)="editar(p.id)">Editar
