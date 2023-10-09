@@ -5,6 +5,6 @@ export class Produto {
 	nome: string;
 	fabricanteDoProduto: Fabricante;
     peso: number;
-    valor?: number; // O símbolo ? indica que o atributo é opcional
+    valor: number;
     dataCadastro: Date;
 }
