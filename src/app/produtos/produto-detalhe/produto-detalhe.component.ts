@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produto } from 'src/app/shared/model/produto';
+import { FabricanteService } from 'src/app/shared/service/fabricante.service';
 import { ProdutoService } from 'src/app/shared/service/produto.service';
 import Swal from 'sweetalert2';
 import { Fabricante } from './../../shared/model/fabricante';
@@ -17,17 +18,27 @@ export class ProdutoDetalheComponent implements OnInit {
   public fabricantes: Fabricante[] = [];
 
   constructor(private produtoService: ProdutoService,
+              private fabricanteService: FabricanteService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.idProduto = params['id']; //'id' é o nome do parâmetro definido na rota
-      
+
       if(this.idProduto){
         this.buscarProduto();
       }
     });
+
+    this.fabricanteService.listarTodos().subscribe(
+      resultado => {
+        this.fabricantes = resultado;
+      },
+      erro => {
+        Swal.fire("Erro", "Erro ao buscar os fabricantes: " + erro, 'error');
+      }
+    );
   }
   salvar(){
     if(this.idProduto){
@@ -64,10 +75,10 @@ export class ProdutoDetalheComponent implements OnInit {
         this.produto = resultado;
       },
       erro => {
-        Swal.fire("Erro", "Erro ao buscar o produto com id (" 
+        Swal.fire("Erro", "Erro ao buscar o produto com id ("
                       + this.idProduto + ") : " + erro, 'error');
       }
-    );  
+    );
   }
 
   voltar(){
