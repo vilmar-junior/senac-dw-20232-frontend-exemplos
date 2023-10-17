@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produto } from 'src/app/shared/model/produto';
 import { ProdutoService } from 'src/app/shared/service/produto.service';
-import { Fabricante } from './../../shared/model/fabricante';
-import { FabricanteService } from './../../shared/service/fabricante.service';
 import Swal from 'sweetalert2';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { Fabricante } from './../../shared/model/fabricante';
 
 @Component({
   selector: 'app-produto-detalhe',
@@ -19,7 +17,6 @@ export class ProdutoDetalheComponent implements OnInit {
   public fabricantes: Fabricante[] = [];
 
   constructor(private produtoService: ProdutoService,
-              private fabricanteService: FabricanteService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -31,17 +28,7 @@ export class ProdutoDetalheComponent implements OnInit {
         this.buscarProduto();
       }
     });
-
-    this.fabricanteService.listarTodos().subscribe(
-      resultado => {
-        this.fabricantes = resultado;
-      },
-      erro => {
-        Swal.fire("Erro", "Erro ao buscar os fabricantes: " + erro, 'error');
-      }
-    )
   }
-
   salvar(){
     if(this.idProduto){
       //é EDIÇÃO
@@ -84,7 +71,7 @@ export class ProdutoDetalheComponent implements OnInit {
   }
 
   voltar(){
-    this.router.navigate(['app/produtos/listagem/']);
+    this.router.navigate(['/produtos/lista/']);
   }
 
   public compareById(r1: any, r2: any): boolean {
