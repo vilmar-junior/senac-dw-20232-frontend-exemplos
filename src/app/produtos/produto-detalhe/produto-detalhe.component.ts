@@ -16,6 +16,8 @@ export class ProdutoDetalheComponent implements OnInit {
   public idProduto: number;
   public produto: Produto = new Produto();
   public fabricantes: Fabricante[] = [];
+  public dataMinima: string;
+  public dataMaxima: string;
 
   constructor(private produtoService: ProdutoService,
               private fabricanteService: FabricanteService,
@@ -23,6 +25,9 @@ export class ProdutoDetalheComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.dataMinima = "2023-10-02";
+    this.dataMaxima = "2023-10-25";
+
     this.route.params.subscribe(params => {
       this.idProduto = params['id']; //'id' é o nome do parâmetro definido na rota
 

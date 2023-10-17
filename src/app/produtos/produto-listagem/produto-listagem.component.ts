@@ -31,24 +31,25 @@ export class ProdutoListagemComponent implements OnInit {
 
   excluir(id: number){
     //https://sweetalert2.github.io/
-    
     Swal.fire({
       title: 'Você está certo disso?',
       text: "Deseja excluir o produto #" + id + "?",
       icon: 'warning',
       showCancelButton: true,
-    }).then(r => {
-      this.produtoService.excluir(id).subscribe(  
-        sucesso => {
-          Swal.fire("Sucesso", "Produto excluído com sucesso!", 'success');
-          this.buscarProdutos(); //Atualiza a listagem
-        },
-        erro => {
-          Swal.fire("Erro", "Erro ao excluir o produto: " + erro, 'error');
-        }
-      )
+    }).then((retorno) => {
+       if(retorno.isConfirmed){
+          this.produtoService.excluir(id).subscribe(
+            sucesso => {
+              Swal.fire("Sucesso", "Produto excluído com sucesso!", 'success');
+              this.buscarProdutos(); //Atualiza a listagem
+            },
+            erro => {
+              Swal.fire("Erro", "Erro ao excluir o produto: " + erro, 'error');
+            }
+          );
+       }
      }
-    )
+    );
   }
 
   pesquisar(){
