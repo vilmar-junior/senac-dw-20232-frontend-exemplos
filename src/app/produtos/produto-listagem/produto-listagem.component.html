@@ -26,10 +26,12 @@
               <br>
               <div class="row">
                 <div class="form-group col-md-6">
+                </div>
+                <div class="form-group col-md-3">
                   <button type="submit" class="form-control btn btn-primary"
                           (click)="pesquisar()">Pesquisar</button>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                   <button type="submit" class="form-control btn btn-danger"
                           (click)="limpar()">Limpar</button>
                 </div>
@@ -54,20 +56,25 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Nome (Marca)</th>
-                      <th scope="col">Valor</th>
-                      <th scope="col">Data de Cadastro</th>
-                      <th>Ações</th>
+                      <th scope="col" class="text-center">Valor</th>
+                      <th scope="col" class="text-center">Data de Cadastro</th>
+                      <!-- https://getbootstrap.com/docs/5.3/utilities/text/ -->
+                      <th class="text-center">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let p of produtos">
                       <td>{{p.id}}</td>
                       <td>{{p.nome}} ({{p.fabricanteDoProduto.nome}})</td>
-                      <td>{{p.valor | currency: 'BRL'}}</td>
-                      <td>{{p.dataCadastro | date: 'dd/MM/yyyy'}}</td>
-                      <td>
-                        <button class="btn btn-xs btn-info"
+                      <td class="text-center">{{p.valor | currency: 'BRL'}}</td>
+                      <td class="text-center">{{p.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+                      <td class="text-center">
+                        <button class="btn btn-xs btn-secondary mr-12"
                                 (click)="editar(p.id)">Editar
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-xs btn-danger"
+                                (click)="excluir(p.id)">Excluir
                         </button>
                       </td>
                     </tr>
