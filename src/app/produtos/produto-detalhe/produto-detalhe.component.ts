@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produto } from 'src/app/shared/model/produto';
 import { FabricanteService } from 'src/app/shared/service/fabricante.service';
@@ -18,6 +19,9 @@ export class ProdutoDetalheComponent implements OnInit {
   public fabricantes: Fabricante[] = [];
   public dataMinima: string;
   public dataMaxima: string;
+
+  @ViewChild('ngForm') 
+  public ngForm: NgForm;
 
   constructor(private produtoService: ProdutoService,
               private fabricanteService: FabricanteService,
@@ -45,33 +49,46 @@ export class ProdutoDetalheComponent implements OnInit {
       }
     );
   }
-  salvar(){
+  salvar(form: NgForm){
+    if(form.invalid){
+      Swal.fire("Erro", "Formulário inválido!", 'error');
+      return;
+    } 
+    
     if(this.idProduto){
-      //é EDIÇÃO
-      this.produtoService.atualizar(this.produto).subscribe(
-        sucesso => {
-          Swal.fire("Sucesso", "Produto atualizado!", 'success');
-          this.produto = new Produto();
-        },
-        erro => {
-          Swal.fire("Erro", "Erro ao atualizar o produto: " + erro, 'error');
-        }
-      );
+      this.inserirProduto();
     }else{
-      //é CADASTRO
-      this.produtoService.salvar(this.produto).subscribe(
-        sucesso => {
-          //usar um componente de alertas (importar no app.module.ts)
-          //https://github.com/sweetalert2/ngx-sweetalert2
-          //Swal.fire(titulo, texto, 'warning');
-          Swal.fire("Sucesso", "Produto cadastrado!", 'success');
-          this.produto = new Produto();
-        },
-        erro => {
-          Swal.fire("Erro", "Erro ao cadastrar o produto: " + erro, 'error');
-        }
-      );
+      this.atualizarProduto()
     }
+  }
+
+  inserirProduto(){
+    //é EDIÇÃO
+    this.produtoService.atualizar(this.produto).subscribe(
+      sucesso => {
+        Swal.fire("Sucesso", "Produto atualizado!", 'success');
+        this.produto = new Produto();
+      },
+      erro => {
+        Swal.fire("Erro", "Erro ao atualizar o produto: " + erro, 'error');
+      }
+    );
+  }
+
+  atualizarProduto(){
+    //é CADASTRO
+    this.produtoService.salvar(this.produto).subscribe(
+      sucesso => {
+        //usar um componente de alertas (importar no app.module.ts)
+        //https://github.com/sweetalert2/ngx-sweetalert2
+        //Swal.fire(titulo, texto, 'warning');
+        Swal.fire("Sucesso", "Produto cadastrado!", 'success');
+        this.produto = new Produto();
+      },
+      erro => {
+        Swal.fire("Erro", "Erro ao cadastrar o produto: " + erro, 'error');
+      }
+    );
   }
 
   buscarProduto(){
