@@ -20,7 +20,7 @@ export class ProdutoDetalheComponent implements OnInit {
   public dataMinima: string;
   public dataMaxima: string;
 
-  @ViewChild('ngForm') 
+  @ViewChild('ngForm')
   public ngForm: NgForm;
 
   constructor(private produtoService: ProdutoService,
@@ -51,14 +51,14 @@ export class ProdutoDetalheComponent implements OnInit {
   }
   salvar(form: NgForm){
     if(form.invalid){
-      Swal.fire("Erro", "Formulário inválido!", 'error');
+      Swal.fire("Atenção", "Revise, por gentileza", 'warning');
       return;
-    } 
-    
+    }
+
     if(this.idProduto){
-      this.inserirProduto();
-    }else{
       this.atualizarProduto()
+    }else{
+      this.inserirProduto();
     }
   }
 
