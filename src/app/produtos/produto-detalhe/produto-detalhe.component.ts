@@ -49,6 +49,7 @@ export class ProdutoDetalheComponent implements OnInit {
       }
     );
   }
+
   salvar(form: NgForm){
     if(form.invalid){
       Swal.fire("Atenção", "Revise, por gentileza", 'warning');
@@ -62,7 +63,7 @@ export class ProdutoDetalheComponent implements OnInit {
     }
   }
 
-  inserirProduto(){
+  atualizarProduto(){
     //é EDIÇÃO
     this.produtoService.atualizar(this.produto).subscribe(
       sucesso => {
@@ -75,7 +76,7 @@ export class ProdutoDetalheComponent implements OnInit {
     );
   }
 
-  atualizarProduto(){
+  inserirProduto(){
     //é CADASTRO
     this.produtoService.salvar(this.produto).subscribe(
       sucesso => {
