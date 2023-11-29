@@ -12,10 +12,23 @@ export class FabricanteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // Declarar os métodos da API REST
-  //TODO
-
   listarTodos(): Observable<Array<Fabricante>> {
     return this.httpClient.get<Array<Fabricante>>(this.API);
+  }
+
+  salvar(fabricante: Fabricante): Observable<Fabricante> {
+    return this.httpClient.post<Fabricante>(this.API, fabricante);
+  }
+
+  atualizar(fabricante: Fabricante): Observable<Fabricante> {
+    return this.httpClient.put<Fabricante>(this.API, fabricante);
+  }
+ 
+  pesquisarPorId(id: number): Observable<Fabricante> {
+    return this.httpClient.get<Fabricante>(this.API + '/' + id);
+  }
+
+  getTipos(): Observable<Array<string>> {
+    return this.httpClient.get<Array<string>>(this.API + '/tipos');
   }
 }

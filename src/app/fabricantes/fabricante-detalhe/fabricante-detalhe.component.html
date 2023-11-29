@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <h2>Novo Fabricante</h2>
+    
+    <form #ngForm="ngForm">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome</label>
+                <input [ngClass]="!fabricante.nome && ngForm.submitted ? 'form-control is-invalid' : 'form-control'"
+                       [(ngModel)]="fabricante.nome" 
+                       minlength="3" name="nome"
+                       required>
+                <div class="invalid-feedback">Informe um nome com no mínimo 3 caracteres</div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="cnpj">CNPJ</label>
+                <input [ngClass]="!fabricante.cnpj && ngForm.submitted ? 'form-control is-invalid' : 'form-control'"
+                       [(ngModel)]="fabricante.cnpj" 
+                       minlength="14" maxlength="14" name="cnpj" type="number"
+                       required>
+                <div class="invalid-feedback">Informe o CNPJ</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="cnpj">CEP</label>
+                <input [ngClass]="!fabricante.cep && ngForm.submitted ? 'form-control is-invalid' : 'form-control'"
+                       [(ngModel)]="fabricante.cep" 
+                       name="cep"
+                       required>
+                <div class="invalid-feedback">Informe o CEP</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="nome">Cidade</label>
+                <input [ngClass]="!fabricante.cidade && ngForm.submitted ? 'form-control is-invalid' : 'form-control'"
+                       [(ngModel)]="fabricante.cidade" 
+                       name="cidade"
+                       required>
+                <div class="invalid-feedback">Informe um nome com no mínimo 3 caracteres</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cnpj">Estado</label>
+                <input [ngClass]="!fabricante.uf && ngForm.submitted ? 'form-control is-invalid' : 'form-control'"
+                       [(ngModel)]="fabricante.uf" 
+                       name="uf"
+                       required>
+                <div class="invalid-feedback">Informe o Estado</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label>&nbsp;</label> 
+                <button type="submit" class="form-control btn btn-primary" (click)="salvar()">Salvar</button>
+            </div>
+            <div class="form-group col-md-3">
+                <label>&nbsp;</label> 
+                <button type="button" class="form-control btn btn-warning" (click)="limpar()">Limpar</button>
+            </div>
+        </div>
+    </form>
+</div>

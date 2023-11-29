@@ -1,3 +1,4 @@
+import { FabricantesModule } from './fabricantes/fabricantes.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -7,6 +8,10 @@ const routes: Routes = [
   {
     path: 'produtos',
     loadChildren:() => import('./produtos/produtos.module').then(m => m.ProdutosModule)
+  },
+  {
+    path: 'fabricantes',
+    loadChildren:() => import('./fabricantes/fabricantes.module').then(m => m.FabricantesModule)
   }
 ];
 
