@@ -46,7 +46,13 @@ export class FabricanteDetalheComponent implements OnInit {
     );
   }
 
-  salvar(){
+  salvar(form: NgForm){
+
+    if(form.invalid){
+      Swal.fire("Atenção", "Revise, por gentileza", 'warning');
+      return;
+    }
+
     if(this.idFabricante){
       this.atualizarFabricante()
     }else{
@@ -68,7 +74,7 @@ export class FabricanteDetalheComponent implements OnInit {
   }
 
   limpar(){
-    this.fabricante = new Fabricante();  
+    this.fabricante = new Fabricante();
   }
 
   inserirFabricante(){
