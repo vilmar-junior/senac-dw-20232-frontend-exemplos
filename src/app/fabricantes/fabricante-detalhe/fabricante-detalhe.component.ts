@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import {  Endereco, NgxViacepService } from '@brunoc/ngx-viacep';
 import { Fabricante } from 'src/app/shared/model/fabricante';
 import { FabricanteService } from 'src/app/shared/service/fabricante.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,10 @@ export class FabricanteDetalheComponent implements OnInit {
   @ViewChild('ngForm')
   public ngForm: NgForm;
 
+  public enderecoConsultado: any;
+
   constructor(private fabricanteService: FabricanteService,
+              private viacep: NgxViacepService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -100,5 +104,25 @@ export class FabricanteDetalheComponent implements OnInit {
                       + this.idFabricante + ") : " + erro, 'error');
       }
     );
+  }
+
+  buscarCEP(){
+    this.viacep.buscarPorCep(this.fabricante.cep).subscribe(
+      retorno => {
+        this.enderecoConsultado = retorno;
+      }
+    );
+  }
+
+  validarNome(){
+    let estiloInput = 'form-control';
+
+    if(this.ngForm && this.ngForm.invalid){
+      if(this.fabricante.nome != null && this.fabricante.nome.length < 3){
+        estiloInput = 'form-control is-invalid';
+      }
+    }
+
+    return estiloInput;
   }
 }
